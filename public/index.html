@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>PU | Browse</title>
+
+		<link rel="shortcut icon" content="favicon.webp" />
+	
+		<script src="/scram/scramjet.all.js"></script>
+		<script src="/baremux/index.js"></script>
+		
+		<link rel="stylesheet" href="index.css" />
+		<script src="register-sw.js" defer></script>
+		<script src="search.js" defer></script>
+		<script src="settings.js" defer></script>
+		<script src="index.js" defer></script>
+		<script src="navigation.js" defer></script>
+
+		<style>
+			#animated-bg {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				background: radial-gradient(ellipse at top, #1a1a2e 0%, #0f0f1e 50%, #000000 100%);
+			}
+
+			.particle {
+				position: absolute;
+				border-radius: 50%;
+				pointer-events: none;
+			}
+
+			@keyframes float {
+				0%, 100% {
+					transform: translateY(0) translateX(0);
+				}
+				25% {
+					transform: translateY(-20px) translateX(10px);
+				}
+				50% {
+					transform: translateY(-10px) translateX(-10px);
+				}
+				75% {
+					transform: translateY(-30px) translateX(5px);
+				}
+			}
+
+			.grid-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: 
+					linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+				background-size: 50px 50px;
+				opacity: 0.3;
+			}
+
+			.loading-star {
+				position: absolute;
+				animation: starTwinkle 2s ease-in-out infinite;
+			}
+
+			@keyframes starTwinkle {
+				0%, 100% {
+					opacity: 0.3;
+					transform: scale(1);
+				}
+				50% {
+					opacity: 1;
+					transform: scale(1.2);
+				}
+			}
+
+			.loading-star:nth-child(1) { animation-delay: 0s; }
+			.loading-star:nth-child(2) { animation-delay: 0.2s; }
+			.loading-star:nth-child(3) { animation-delay: 0.4s; }
+			.loading-star:nth-child(4) { animation-delay: 0.6s; }
+			.loading-star:nth-child(5) { animation-delay: 0.8s; }
+			.loading-star:nth-child(6) { animation-delay: 1s; }
+		</style>
+	</head>
+
+<body>
+
+	<div id="animated-bg">
+		<div class="grid-overlay"></div>
+	</div>
+
+	<div id="loading-overlay">
+		<div class="loading-stars-container">
+			<svg class="loading-star" width="40" height="40" viewBox="0 0 51 48" style="top: 20%; left: 30%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#6495ED"/>
+			</svg>
+			<svg class="loading-star" width="30" height="30" viewBox="0 0 51 48" style="top: 60%; left: 20%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#9370DB"/>
+			</svg>
+			<svg class="loading-star" width="35" height="35" viewBox="0 0 51 48" style="top: 30%; left: 70%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#87CEEB"/>
+			</svg>
+			<svg class="loading-star" width="25" height="25" viewBox="0 0 51 48" style="top: 70%; left: 65%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#B19CD9"/>
+			</svg>
+			<svg class="loading-star" width="45" height="45" viewBox="0 0 51 48" style="top: 45%; left: 50%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#778899"/>
+			</svg>
+			<svg class="loading-star" width="28" height="28" viewBox="0 0 51 48" style="top: 15%; left: 55%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#9966CC"/>
+			</svg>
+		</div>
+	</div>
+
+	<button class="topbar-toggle" id="topbar-toggle" title="Show/Hide Topbar">
+		<svg viewBox="0 0 24 24">
+			<path d="M7 10l5 5 5-5z"/>
+		</svg>
+	</button>
+
+	<div class="floating-topbar" id="floating-topbar">
+		<button class="topbar-icon" id="home-btn" title="Home">
+			<svg viewBox="0 0 24 24">
+				<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+			</svg>
+		</button>
+
+		<form id="topbar-form" class="topbar-url-form">
+			<input id="topbar-address" type="text" placeholder="Search or enter a link" />
+		</form>
+
+		<button class="topbar-icon" id="refresh-btn" title="Refresh">
+			<svg viewBox="0 0 24 24">
+				<path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+			</svg>
+		</button>
+
+		<button class="topbar-icon" id="settings-btn" title="Settings">
+			<svg viewBox="0 0 24 24">
+				<path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.65 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.23.39.32.6.22l2.39-.96c.51.4 1.05.71 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.58-.23 1.12-.54 1.63-.94l2.39.96c.21.1.47.01.6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+			</svg>
+		</button>
+	</div>
+
+	<div class="logo-wrapper" id="home-content">
+		<h1>Project Unbound</h1>
+	</div>
+
+	<div class="desc" id="home-desc">
+		<p>Made by b61u</p>
+	</div>
+
+	<form id="sj-form">
+		<input
+			id="sj-search-engine"
+			value="https://duckduckgo.com/?q=%s"
+			type="hidden"
+		/>
+		<input id="sj-address" type="text" placeholder="Search anything" />
+	</form>
+
+	<div class="main-menu-buttons">
+		<button class="menu-btn" id="games-btn-main" title="Games">
+<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7.05025 1.53553C8.03344 0.552348 9.36692 0 10.7574 0C13.6528 0 16 2.34721 16 5.24264C16 6.63308 15.4477 7.96656 14.4645 8.94975L12.4142 11L11 9.58579L13.0503 7.53553C13.6584 6.92742 14 6.10264 14 5.24264C14 3.45178 12.5482 2 10.7574 2C9.89736 2 9.07258 2.34163 8.46447 2.94975L6.41421 5L5 3.58579L7.05025 1.53553Z" fill="#ffffff"></path> <path d="M7.53553 13.0503L9.58579 11L11 12.4142L8.94975 14.4645C7.96656 15.4477 6.63308 16 5.24264 16C2.34721 16 0 13.6528 0 10.7574C0 9.36693 0.552347 8.03344 1.53553 7.05025L3.58579 5L5 6.41421L2.94975 8.46447C2.34163 9.07258 2 9.89736 2 10.7574C2 12.5482 3.45178 14 5.24264 14C6.10264 14 6.92742 13.6584 7.53553 13.0503Z" fill="#ffffff"></path> <path d="M5.70711 11.7071L11.7071 5.70711L10.2929 4.29289L4.29289 10.2929L5.70711 11.7071Z" fill="#ffffff"></path> </g></svg>
+			Links
+		</button>
+		<button class="menu-btn" id="settings-btn-main" title="Settings">
+			<svg viewBox="0 0 24 24">
+				<path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.65 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.23.39.32.6.22l2.39-.96c.51.4 1.05.71 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.58-.23 1.12-.54 1.63-.94l2.39.96c.21.1.47.01.6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+			</svg>
+			Settings
+		</button>
+	</div>
+
+	<div class="desc">
+		<p id="sj-error"></p>
+		<pre id="sj-error-code"></pre>
+	</div>
+
+	<div class="settings-overlay" id="settings-overlay">
+		<div class="settings-panel">
+			<div class="settings-header">
+				<h2>Settings</h2>
+				<button class="settings-close" id="settings-close">
+					<svg viewBox="0 0 24 24">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+					</svg>
+				</button>
+			</div>
+			
+			<div class="settings-content">
+				<div class="settings-section">
+					<h3>Tab Cloaking</h3>
+					<p class="settings-description">Choose how to disguise this tab when the page loads</p>
+					<select id="cloak-mode" class="settings-select">
+						<option value="none">None (Default)</option>
+						<option value="about:blank">about:blank</option>
+						<option value="blob">Blob URL</option>
+					</select>
+				</div>
+				
+				<div class="settings-section">
+					<h3>Wisp Server URL</h3>
+					<p class="settings-description">Custom Wisp server (leave blank for default)</p>
+					<input 
+						type="text" 
+						id="wisp-url" 
+						class="settings-input"
+						placeholder="wss://example.com/wisp/"
+					/>
+				</div>
+			</div>
+			
+			<div class="settings-footer">
+				<button class="settings-btn" id="settings-save">Save Settings</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const bg = document.getElementById('animated-bg');
+		const particleCount = 50;
+
+		for (let i = 0; i < particleCount; i++) {
+			const particle = document.createElement('div');
+			particle.className = 'particle';
+			
+			const size = Math.random() * 4 + 1;
+			const x = Math.random() * 100;
+			const y = Math.random() * 100;
+			const duration = Math.random() * 20 + 10;
+			const delay = Math.random() * 5;
+			const opacity = Math.random() * 0.5 + 0.1;
+			
+			const colors = ['rgba(100, 150, 255, ', 'rgba(150, 100, 255, ', 'rgba(200, 150, 255, '];
+			const color = colors[Math.floor(Math.random() * colors.length)];
+			
+			particle.style.width = size + 'px';
+			particle.style.height = size + 'px';
+			particle.style.left = x + '%';
+			particle.style.top = y + '%';
+			particle.style.background = color + opacity + ')';
+			particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+			particle.style.boxShadow = `0 0 ${size * 2}px ${color + (opacity * 0.8) + ')'}`;
+			
+			bg.appendChild(particle);
+		}
+	</script>
+
+</body>
+</html>

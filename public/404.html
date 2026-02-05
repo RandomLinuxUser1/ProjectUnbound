@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>PU | Error</title>
+		<base href="/" />
+		<link rel="shortcut icon" content="favicon.ico" />
+		<link rel="stylesheet" href="index.css" />
+		<style>
+			.error-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				padding: 20px;
+			}
+			.error-icon {
+				font-size: 80px;
+				margin-bottom: 20px;
+				opacity: 0.7;
+			}
+			.error-title {
+				font-size: 32px;
+				margin-bottom: 10px;
+			}
+			.error-desc {
+				margin-bottom: 30px;
+				opacity: 0.8;
+			}
+			.error-actions {
+				display: flex;
+				gap: 16px;
+			}
+			.error-btn {
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				color: #fff;
+				padding: 12px 24px;
+				border-radius: 12px;
+				font-family: inherit;
+				font-size: 14px;
+				cursor: pointer;
+				transition: background 0.15s ease, border 0.15s ease, transform 0.05s ease;
+			}
+			.error-btn:hover {
+				background: rgba(255, 255, 255, 0.1);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				transform: translateY(-2px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="error-container">
+			<div class="error-icon">⚠️</div>
+			<div class="logo-wrapper">
+				<h1 class="error-title">Unable to Load Page</h1>
+			</div>
+			<div class="desc error-desc">
+				<p>The webpage might be temporarily down or it may have moved permanently to a new web address.</p>
+			</div>
+			<div class="error-actions">
+				<button class="error-btn" onclick="window.history.back()">Go Back</button>
+				<button class="error-btn" onclick="window.location.href='/'">Home</button>
+			</div>
+		</div>
+	</body>
+</html>

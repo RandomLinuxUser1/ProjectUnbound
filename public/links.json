@@ -1,0 +1,180 @@
+{
+    "categories": [
+        {
+            "name": "Games",
+            "icon": "🎮",
+            "links": [
+                {
+                    "name": "CrazyGames",
+                    "url": "https://www.crazygames.com"
+                },
+                {
+                    "name": "Poki",
+                    "url": "https://poki.com"
+                },
+                {
+                    "name": "Krunker",
+                    "url": "https://krunker.io"
+                },
+                {
+                    "name": "Shell Shockers",
+                    "url": "https://shellshock.io"
+                },
+                {
+                    "name": "1v1.LOL",
+                    "url": "https://1v1.lol"
+                },
+                {
+                    "name": "Slope",
+                    "url": "https://slope-game.github.io"
+                }
+            ]
+        },
+        {
+            "name": "Movies & TV",
+            "icon": "🎬",
+            "links": [
+                {
+                    "name": "Netflix",
+                    "url": "https://netflix.com"
+                },
+                {
+                    "name": "Disney+",
+                    "url": "https://disneyplus.com"
+                },
+                {
+                    "name": "Hulu",
+                    "url": "https://hulu.com"
+                },
+                {
+                    "name": "Prime Video",
+                    "url": "https://primevideo.com"
+                },
+                {
+                    "name": "YouTube",
+                    "url": "https://youtube.com"
+                },
+                {
+                    "name": "ZoeChip",
+                    "url": "https://zoechip.cc"
+                },
+                {
+                    "name": "Look Movies",
+                    "url": "Lookmovie2.to"
+                },
+                {
+                    "name": "DDL Base",
+                    "url": "https://ddlbase.com"
+                },
+                {
+                    "name": "Vid Box",
+                    "url": "https://vidbox.cc"
+                }
+            ]
+        },
+        {
+            "name": "Anime",
+            "icon": "🎌",
+            "links": [
+                {
+                    "name": "Crunchyroll",
+                    "url": "https://crunchyroll.com"
+                },
+                {
+                    "name": "Funimation",
+                    "url": "https://funimation.com"
+                },
+                {
+                    "name": "AnimeLab",
+                    "url": "https://animelab.com"
+                },
+                {
+                    "name": "HiAnime",
+                    "url": "https://hianime.to"
+                },
+                {
+                    "name": "Miruro",
+                    "links": "https://www.miruro.com"
+                },
+                {
+                    "name": "Anime X",
+                    "links": "https://animex.one"
+                }
+            ]
+        },
+        {
+            "name": "Social Media",
+            "icon": "📱",
+            "links": [
+                {
+                    "name": "Discord",
+                    "url": "https://discord.com"
+                },
+                {
+                    "name": "Twitter",
+                    "url": "https://twitter.com"
+                },
+                {
+                    "name": "Instagram",
+                    "url": "https://instagram.com"
+                },
+                {
+                    "name": "Reddit",
+                    "url": "https://reddit.com"
+                },
+                {
+                    "name": "TikTok",
+                    "url": "https://tiktok.com"
+                }
+            ]
+        },
+        {
+            "name": "Tools",
+            "icon": "🛠️",
+            "links": [
+                {
+                    "name": "Google Drive",
+                    "url": "https://drive.google.com"
+                },
+                {
+                    "name": "Gmail",
+                    "url": "https://mail.google.com"
+                },
+                {
+                    "name": "GitHub",
+                    "url": "https://github.com"
+                },
+                {
+                    "name": "ChatGPT",
+                    "url": "https://chat.openai.com"
+                },
+                {
+                    "name": "Donarev email",
+                    "url": "https://fbi.one"
+                }
+            ]
+        },
+        {
+            "name": "Music",
+            "icon": "🎵",
+            "links": [
+                {
+                    "name": "Spotify",
+                    "url": "https://spotify.com"
+                },
+                {
+                    "name": "SoundCloud",
+                    "url": "https://soundcloud.com"
+                },
+                {
+                    "name": "Apple Music",
+                    "url": "https://music.apple.com"
+                },
+                {
+                    "name": "YouTube Music",
+                    "url": "https://music.youtube.com"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>PU | Links</title>
+
+		<link rel="shortcut icon" content="favicon.webp" />
+	
+		<script src="/scram/scramjet.all.js"></script>
+		<script src="/baremux/index.js"></script>
+		
+		<link rel="stylesheet" href="index.css" />
+		<link rel="stylesheet" href="links.css" />
+		<script src="register-sw.js" defer></script>
+		<script src="search.js" defer></script>
+		<script src="settings.js" defer></script>
+		<script src="index.js" defer></script>
+		<script src="navigation.js" defer></script>
+		<script src="links.js" defer></script>
+	</head>
+
+<body>
+
+	<div id="loading-overlay">
+		<div class="loading-stars-container">
+			<svg class="loading-star" width="40" height="40" viewBox="0 0 51 48" style="top: 20%; left: 30%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#6495ED"/>
+			</svg>
+			<svg class="loading-star" width="30" height="30" viewBox="0 0 51 48" style="top: 60%; left: 20%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#9370DB"/>
+			</svg>
+			<svg class="loading-star" width="35" height="35" viewBox="0 0 51 48" style="top: 30%; left: 70%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#87CEEB"/>
+			</svg>
+			<svg class="loading-star" width="25" height="25" viewBox="0 0 51 48" style="top: 70%; left: 65%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#B19CD9"/>
+			</svg>
+			<svg class="loading-star" width="45" height="45" viewBox="0 0 51 48" style="top: 45%; left: 50%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#778899"/>
+			</svg>
+			<svg class="loading-star" width="28" height="28" viewBox="0 0 51 48" style="top: 15%; left: 55%;">
+				<path d="M25.5 0l7.5 15.5L51 18l-13 12.5L41 48l-15.5-8L10 48l3-17.5L0 18l18-2.5z" fill="#9966CC"/>
+			</svg>
+		</div>
+	</div>
+
+	<button class="topbar-toggle" id="topbar-toggle" title="Show/Hide Topbar">
+		<svg viewBox="0 0 24 24">
+			<path d="M7 10l5 5 5-5z"/>
+		</svg>
+	</button>
+
+	<div class="floating-topbar" id="floating-topbar">
+		<button class="topbar-icon" id="home-btn" title="Home">
+			<svg viewBox="0 0 24 24">
+				<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+			</svg>
+		</button>
+
+		<form id="topbar-form" class="topbar-url-form">
+			<input id="topbar-address" type="text" placeholder="Search or enter a link" />
+		</form>
+
+		<button class="topbar-icon" id="refresh-btn" title="Refresh">
+			<svg viewBox="0 0 24 24">
+				<path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+			</svg>
+		</button>
+
+		<button class="topbar-icon" id="settings-btn" title="Settings">
+			<svg viewBox="0 0 24 24">
+				<path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.58.23-1.12.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.65 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.23.39.32.6.22l2.39-.96c.51.4 1.05.71 1.63.94l.36 2.54c.05.24.26.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.58-.23 1.12-.54 1.63-.94l2.39.96c.21.1.47.01.6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/>
+			</svg>
+		</button>
+	</div>
+
+	<div class="links-container">
+		<div class="links-header">
+			<h1>Quick Links</h1>
+			<p>Browse your favorite sites</p>
+		</div>
+
+		<div id="links-content" class="links-content">
+		</div>
+	</div>
+
+	<div class="settings-overlay" id="settings-overlay">
+		<div class="settings-panel">
+			<div class="settings-header">
+				<h2>Settings</h2>
+				<button class="settings-close" id="settings-close">
+					<svg viewBox="0 0 24 24">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+					</svg>
+				</button>
+			</div>
+			
+			<div class="settings-content">
+				<div class="settings-section">
+					<h3>Tab Cloaking</h3>
+					<p class="settings-description">Choose how to disguise this tab when the page loads</p>
+					<select id="cloak-mode" class="settings-select">
+						<option value="none">None (Default)</option>
+						<option value="about:blank">about:blank</option>
+						<option value="blob">Blob URL</option>
+					</select>
+				</div>
+				
+				<div class="settings-section">
+					<h3>Wisp Server URL</h3>
+					<p class="settings-description">Custom Wisp server (leave blank for default)</p>
+					<input 
+						type="text" 
+						id="wisp-url" 
+						class="settings-input"
+						placeholder="wss://example.com/wisp/"
+					/>
+				</div>
+			</div>
+			
+			<div class="settings-footer">
+				<button class="settings-btn" id="settings-save">Save Settings</button>
+			</div>
+		</div>
+	</div>
+
+	<form id="sj-form" style="display: none;">
+		<input
+			id="sj-search-engine"
+			value="https://www.google.com/search?q=%s"
+			type="hidden"
+		/>
+		<input id="sj-address" type="text" />
+	</form>
+
+</body>
+</html>
